@@ -1,0 +1,9 @@
+{
+  "name": "inspector-desktop",
+  "version": "0.0.1",
+  "description": "Desktop software for Inspector.",
+  "main": "main.js",
+  "repository": "https://github.com/jtklein/inspector-desktop.git",
+  "author": "Johannes Klein <johannes.t.klein@gmail.com>",
+  "license": "MIT"
+}
