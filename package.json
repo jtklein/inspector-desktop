@@ -1,10 +1,20 @@
 {
   "name": "inspector-desktop",
+  "productName": "Inspector",
   "version": "0.0.1",
+  "private": true,
   "description": "Desktop software for Inspector.",
   "repository": "https://github.com/jtklein/inspector-desktop.git",
   "author": "Johannes Klein <johannes.t.klein@gmail.com>",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jtklein/inspector-desktop/issues"
+  },
+  "keywords": [
+    "Electron",
+    "Inspector",
+    "GUI"
+  ],
   "main": "build/electron.js",
   "scripts": {
     "start": "cross-env ELECTRON_START_URL=http://localhost:3000/ run-p react-start electron-dev",
@@ -99,5 +109,49 @@
       "sourceDirectory": null
     }
   },
+  "build": {
+    "appId": "org.jtklein.inspector",
+    "productName": "Inspeector",
+    "afterSign": "./scripts/notarize.js",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "files": [
+      "src/main/*"
+    ],
+    "extraResources": [
+      "assets/"
+    ],
+    "dmg": {
+      "icon": "build/disk-image.icns",
+      "sign": false
+    },
+    "mac": {
+      "category": "public.app-category.education",
+      "hardenedRuntime": true,
+      "entitlements": "public/entitlements.mac.inherit.plist",
+      "entitlementsInherit": "public/entitlements.mac.inherit.plist",
+      "extraResources": [
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "extraResources": [
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Education",
+      "extraResources": [
+      ]
+    },
+    "publish": {
+      "provider": "github"
+    }
   }
 }
